@@ -1,9 +1,7 @@
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.matchers.should.Matchers
-
 import chapter2.Chapter2._
+import utils.BaseSpec
 
-class Chapter2ExercisesSpec extends AnyFunSuite with Matchers {
+class Chapter2ExercisesSpec extends BaseSpec {
 
   test("5th Fibonacci should be 5") {
     fib(5) shouldEqual 5
