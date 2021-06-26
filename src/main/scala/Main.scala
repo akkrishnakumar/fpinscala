@@ -1,8 +1,12 @@
-object Main extends App{
+import chapter2.Chapter2
+import chapter3.Chapter3
+
+object Main extends App {
   println("=" * 50)
 
-  //Ex2_1(10)
-  //Ex2_2(Array(1,2,3,5,3), (a: Int, b: Int) => a <= b)
+  // Chapter2()
+  Chapter3()
 
+  println("All Exercises passed !")
   println("=" * 50)
 }
