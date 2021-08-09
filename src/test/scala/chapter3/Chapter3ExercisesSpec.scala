@@ -92,4 +92,47 @@ class Chapter3ExercisesSpec extends BaseSpec {
     concate(List(List(1, 2), List(3, 4))) shouldEqual List(1, 2, 3, 4)
   }
 
+  test("Ex 3.16 - function that transforms a list of integers by adding 1 to it.") {
+    add1(List(1, 2, 3)) shouldEqual List(2, 3, 4)
+  }
+
+  test("Ex 3.17 - function that transforms a each value in List[Double] to string.") {
+    doubleToString(List(1.1, 2.2, 3.3)) shouldEqual List("1.1", "2.2", "3.3")
+  }
+
+  test("Ex 3.18 - generalized map function") {
+    generalizedMap(List(1.1, 2.2, 3.3))(_.toString) shouldEqual List("1.1", "2.2", "3.3")
+  }
+
+  test(
+    "Ex 3.19 - function filter that removes elements from a list unless they satisfy a given predicate"
+  ) {
+    removeOdds(List(1, 2, 3, 4, 5)) shouldEqual List(2, 4)
+  }
+
+  test(
+    "Ex 3.20 - flatMap that works like map except that the function given will return a list instead of a single result"
+  ) {
+    flatMap(List(1, 2, 3))(a => List(a, a)) shouldEqual List(1, 1, 2, 2, 3, 3)
+  }
+
+  test("Ex 3.21 - implement filter using flatMap") {
+    filterUsingFlatMap(List(1, 2, 3, 4, 5))(_ % 2 != 0) shouldEqual List(1, 3, 5)
+  }
+
+  test(
+    "Ex 3.22 - a function that accepts two lists and constructs a new list by adding corresponding elements"
+  ) {
+    addLists(List(1, 2, 3), List(4, 5, 6)) shouldEqual List(5, 7, 9)
+  }
+
+  test("Ex 3.23 - generalize addLists as 'zipWith'") {
+    zipWith(List("a", "b", "c"), List("A", "B", "C"))(_ + _) shouldEqual
+      List("aA", "bB", "cC")
+
+    zipWith(List(1, 2, 3), List(4, 5, 6))(_.toString + _.toString()) shouldEqual
+      List("14", "25", "36")
+
+  }
+
 }

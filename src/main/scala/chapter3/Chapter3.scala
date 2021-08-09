@@ -91,4 +91,45 @@ object Chapter3 {
 
   def concate[A](as: List[List[A]]): List[A] =
     foldRight(as, Nil: List[A])(appendUsingFoldRight)
+
+  def add1(l: List[Int]): List[Int] =
+    foldRight(l, Nil: List[Int]) { (item, acc) =>
+      Cons(item + 1, acc)
+    }
+
+  def doubleToString(l: List[Double]): List[String] =
+    foldRight(l, Nil: List[String]) { (item, acc) =>
+      Cons(item.toString(), acc)
+    }
+
+  def generalizedMap[A, B](l: List[A])(f: A => B): List[B] =
+    foldRight(l, Nil: List[B]) { (item, acc) => Cons(f(item), acc) }
+
+  def filter[A](as: List[A])(f: A => Boolean): List[A] =
+    foldRight(as, Nil: List[A]) { (item, acc) =>
+      if (f(item)) Cons(item, acc) else acc
+    }
+
+  def removeOdds(l: List[Int]) =
+    filter(l)(_ % 2 == 0)
+
+  def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] =
+    concate(generalizedMap(l)(f))
+
+  def filterUsingFlatMap[A](l: List[A])(f: A => Boolean): List[A] =
+    flatMap(l) { item => if (f(item)) Cons(item, Nil) else Nil }
+
+  def addLists(l1: List[Int], l2: List[Int]): List[Int] =
+    (l1, l2) match {
+      case (Nil, _)                     => Nil
+      case (_, Nil)                     => Nil
+      case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1 + h2, addLists(t1, t2))
+    }
+
+  def zipWith[A, B, C](l1: List[A], l2: List[B])(f: (A, B) => C): List[C] =
+    (l1, l2) match {
+      case (Nil, _)                     => Nil
+      case (_, Nil)                     => Nil
+      case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    }
 }

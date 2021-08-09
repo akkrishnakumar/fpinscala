@@ -35,6 +35,7 @@ class Chapter2ExercisesSpec extends BaseSpec {
 
   def f3(b: Int): Int = b / 2
   def g3(a: Int): Int = a + 2
+
   test("compose(f3, g3)(0) == compose(g3, f3)(0) == false") {
     compose(f3, g3)(0) == compose(g3, f3)(0) shouldEqual false
   }
