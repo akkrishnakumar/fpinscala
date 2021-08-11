@@ -152,4 +152,36 @@ object Chapter3 {
 
   }
 
+  def sizeOfTree[A](tree: Tree[A]): Int =
+    tree match {
+      case Leaf(_)             => 1
+      case Branch(left, right) => 1 + sizeOfTree(left) + sizeOfTree(right)
+    }
+
+  def maximum(tree: Tree[Int]): Int =
+    tree match {
+      case Leaf(value)         => value
+      case Branch(left, right) => maximum(left).max(maximum(right))
+    }
+
+  def depth[A](tree: Tree[A]): Int =
+    tree match {
+      case Leaf(_)             => 0
+      case Branch(left, right) => 1 + depth(left).max(depth(right))
+    }
+
+  def sizeViaFold[A](tree: Tree[A]): Int =
+    Tree.fold(tree)(_ => 1)(1 + _ + _)
+
+  def maximumViaFold(tree: Tree[Int]): Int =
+    Tree.fold(tree)(identity)(_.max(_))
+
+  def depthViaFold[A](tree: Tree[A]): Int =
+    Tree.fold(tree)(_ => 0)(1 + _.max(_))
+
+  def mapViaFold[A, B](tree: Tree[A])(f: A => B): Tree[B] = {
+    def g(a: A): Tree[B] = Leaf(f(a))
+    Tree.fold(tree)(g)((a, b) => Branch(a, b))
+  }
+
 }

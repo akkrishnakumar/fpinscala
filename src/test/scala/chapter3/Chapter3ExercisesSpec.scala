@@ -146,4 +146,39 @@ class Chapter3ExercisesSpec extends BaseSpec {
 
   }
 
+  test("Ex 3.25 - Count the number of nodes in a tree") {
+    val tree = Branch(Branch(Leaf("a"), Leaf("b")), Branch(Leaf("c"), Leaf("d")))
+
+    sizeOfTree(tree) shouldEqual 7
+
+  }
+
+  test("Ex 3.26 - Get max element of Tree[Int]") {
+    val tree = Branch(Branch(Leaf(3), Leaf(5)), Branch(Leaf(1), Leaf(2)))
+
+    maximum(tree) shouldEqual 5
+
+  }
+
+  test("Ex 3.27 - Get depth of given tree") {
+    def tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+
+    depth(tree) shouldBe 2
+  }
+
+  test("Ex 3.28 - Map function to tranform elements of a tree") {
+    def tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+
+    Tree.map(tree)(_ * 2) shouldBe Branch(Branch(Leaf(2), Leaf(4)), Leaf(6))
+  }
+
+  test("Ex 3.29 - generalise size, max, depth and map function using fold for tree") {
+    def tree = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+
+    sizeViaFold(tree) shouldBe 5
+    maximumViaFold(tree) shouldBe 3
+    depthViaFold(tree) shouldBe 2
+    mapViaFold(tree)(_ % 2 == 0) shouldBe Branch(Branch(Leaf(false), Leaf(true)), Leaf(false))
+  }
+
 }
