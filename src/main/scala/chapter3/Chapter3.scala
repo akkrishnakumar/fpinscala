@@ -2,6 +2,7 @@ package chapter3
 
 import chapter3.List._
 import scala.collection.mutable.ListBuffer
+import scala.annotation.tailrec
 
 trait Chapter3
 
@@ -132,4 +133,23 @@ object Chapter3 {
       case (_, Nil)                     => Nil
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
     }
+
+  @tailrec
+  def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {
+
+    @tailrec
+    def startsWith[A](p: List[A], c: List[A]): Boolean = (p, c) match {
+      case (p, Nil)                                   => true
+      case (Cons(h1, t1), Cons(h2, t2)) if (h1 == h2) => startsWith(t1, t2)
+      case _                                          => false
+    }
+
+    sup match {
+      case Nil                         => sub == Nil
+      case _ if (startsWith(sup, sub)) => true
+      case Cons(_, tail)               => hasSubsequence(tail, sub)
+    }
+
+  }
+
 }

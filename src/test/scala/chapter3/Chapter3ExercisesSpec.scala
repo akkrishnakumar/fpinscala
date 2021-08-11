@@ -135,4 +135,15 @@ class Chapter3ExercisesSpec extends BaseSpec {
 
   }
 
+  test("Ex 3.24 - check if list A contains list B as sublist") {
+    def l = List(1, 2, 3, 4, 5)
+
+    hasSubsequence(l, List(2, 3)) shouldBe true
+
+    hasSubsequence(l, List(0, 1)) shouldBe false
+
+    hasSubsequence(l, Nil) shouldBe true
+
+  }
+
 }
