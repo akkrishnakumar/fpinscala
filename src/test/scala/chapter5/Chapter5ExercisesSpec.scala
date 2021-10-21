@@ -74,7 +74,7 @@ class Chapter5ExercisesSpec extends BaseSpec {
     fibs.take(7).toList shouldBe List(0, 1, 1, 2, 3, 5, 8)
   }
 
-  test(
+  ignore(
     "Ex 5.11 - Implement unfold method which creates an infinite with initial state and function which generates next state and next value"
   ) {
     // Implement method - unfold
@@ -88,7 +88,7 @@ class Chapter5ExercisesSpec extends BaseSpec {
     fromViaUnfold(100).take(5).toList shouldBe List(100, 101, 102, 103, 104)
   }
 
-  test("Ex 5.12.3 - Implement constant method using unfold") {
+  ignore("Ex 5.12.3 - Implement constant method using unfold") {
     // Implemented constant
   }
 
@@ -96,7 +96,7 @@ class Chapter5ExercisesSpec extends BaseSpec {
     onesViaUnfold.take(10).toList shouldBe List(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
   }
 
-  test("Ex 5.13.1 - Implement map method using unfold") {
+  ignore("Ex 5.13.1 - Implement map method using unfold") {
     // Implemented method - mapViaUnfold
   }
 
@@ -104,15 +104,15 @@ class Chapter5ExercisesSpec extends BaseSpec {
     Stream(1, 2, 3, 4, 5).takeViaUnfold(4).toList shouldBe List(1, 2, 3, 4)
   }
 
-  test("Ex 5.13.3 - Implement takeWhile method using unfold") {
+  ignore("Ex 5.13.3 - Implement takeWhile method using unfold") {
     // Implemented method - takeWhileViaUnfold
   }
 
-  test("Ex 5.13.4 - Implement zipWith method using unfold") {
+  ignore("Ex 5.13.4 - Implement zipWith method using unfold") {
     // Implemented method - zipWithViaUnfold
   }
 
-  test("Ex 5.13.5 - Implement zipAll method using unfold") {
+  ignore("Ex 5.13.5 - Implement zipAll method using unfold") {
     // Implemented method - zipAllViaUnfold
   }
 
