@@ -18,4 +18,5 @@ object Tree {
       case Leaf(value)         => f(value)
       case Branch(left, right) => g(fold(left)(f)(g), fold(right)(f)(g))
     }
+
 }
